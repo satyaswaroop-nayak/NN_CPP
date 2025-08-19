@@ -58,6 +58,22 @@ namespace alg_util {
             return M;
           }
 
+          static alg::Matrix<T> he(size_t rows, size_t cols) {
+            alg::Matrix<T> M{rows, cols};
+        
+            double limit = sqrt(2.0 / cols);  // He uniform
+
+            std::random_device rd;
+            std::mt19937 gen(rd());
+            std::uniform_real_distribution<> d(-limit, limit);
+        
+            for (size_t r = 0; r < rows; ++r) {
+              for (int c = 0; c < cols; ++c) {
+                M(r, c) = d(gen);
+              }
+            }
+            return M;
+          }
         
     };
 }

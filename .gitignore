@@ -1,0 +1,17 @@
+.vscode/
+a.out.DSYM/
+a.out
+addition_test
+addition_test.cpp
+backup.txt
+data.txt
+dustbin.cpp
+extract_data.cpp
+Housing.csv
+main.cpp
+next_number_test
+next_number_test.cpp
+store_to_file_test
+store_to_file_test.cpp
+test.cpp
+weights.txt

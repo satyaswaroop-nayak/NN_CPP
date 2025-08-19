@@ -64,7 +64,7 @@ void train_and_test() {
 
         std::getline(ss, cell, ',');
 
-        y_temp_fill.push_back(std::stof(cell));
+        y_temp_fill.push_back(std::stof(cell)/10000);
         y_temp.fill_vector(y_temp_fill);
         // y_temp.print();
         y.push_back(y_temp);
@@ -100,13 +100,18 @@ void train_and_test() {
     std::cout<<y.size()<<std::endl;
     std::cout<<x.size()<<std::endl;
     std::vector<size_t> layers = {12, 32, 1};
-    nn::NN<float> model = nn::NN<float>(layers, 0.0001f, nn::INIT_TYPE::ONES);
-    model.print_weights();
+    nn::NN<float> model = nn::NN<float>(layers, 0.00001f, "", nn::INIT_TYPE::RANDN);
+    // model.print_weights();
+    for(int ep=0;ep<5000;++ep) {
     for(int i=0;i<400;i++) {
+        // x[i].print();
+        // y[i].print();
         model.forward(x[i]);
         model.backprop(y[i]);
-        model.print_weights();
-    }
+        // model.print_weights();
+    }}
+
+    model.print_weights();
 
     alg::Matrix<float> mse = alg_util::Util<float>::zeros(1, 1);
     for(int i=400;i<500;i++) {
@@ -118,6 +123,11 @@ void train_and_test() {
     mse.print();
 
     // model.print_weights();
+    x[423].print();
+    x[541].print();
+    x[544].print();
+    model.forward(x[423]).print();
+    model.forward(x[541]).print();
     model.forward(x[544]).print();
 
 }
