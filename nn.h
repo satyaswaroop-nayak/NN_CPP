@@ -5,6 +5,7 @@
 #include <cmath>
 #include <stdexcept>
 
+//adding new user
 namespace nn {
     enum INIT_TYPE {
         ZEROS,
